@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_URL")
+}
+
+model baseaddress {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  phone      String  @unique @db.String
+  createdat  String
+  lastupdate String?
+  city       City
+}
+
+type City {
+  name       String  @db.String
+  createdat  String
+  lastupdate String?
+  country    Country
+}
+
+type Country {
+  code       String  @db.String
+  name       String  @db.String
+  createdat  String
+  lastupdate String?
+}
+
+type FullAddress {
+  street        String?
+  house         Int?
+  building      Int?
+  baseaddressid String
+}
+
+model hotel {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  name            String            @unique @db.String
+  rating          Float?
+  description     String?           @db.String
+  createdat       String
+  lastupdate      String?
+  hoteltype       HotelType
+  fulladdress     FullAddress
+  services        Service[]
+}
+
+type HotelType {
+  name        String  @db.String
+  description String  @db.String
+  createdat   String
+  lastupdate  String?
+}
+
+type Service {
+  name        String            @db.String
+  createdat   String
+  description String?           @db.String
+  lastupdate  String?
+  categories  ServiceCategory[]
+}
+
+type ServiceCategory {
+  name        String  @db.String
+  description String? @db.String
+  createdat   String
+  lastupdate  String?
+}
+
+model user {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  firstname       String            @db.String
+  lastname        String            @db.String
+  email           String            @unique @db.String
+  password        String            @db.String
+  createdat       String
+  lastlogin       String
+  lastupdate      String?
+  addressid       String            @db.String
+  role            String
+  hotels          String[]
+}
+
+model room {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String  @db.String
+  amount      BigInt
+  description String? @db.String
+  createdat   String
+  lastupdate  String?
+  hotelid     String  @db.String
+  price       Price[]
+}
+
+type Price {
+  price      Float
+  createdat  String?
+  lastupdate String?
+  period     Period
+}
+
+type Period {
+  startdate  String
+  finishdate String
+  createdat  String
+  lastupdate String?
+}
+
+model payment {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  amount        Float
+  paymentdate   String?
+  createdat     String
+  lastupdate    String?
+  reservationid String      @db.String
+  userid        String?     @db.String
+}
+
+model reservation {
+  id                String             @id @default(auto()) @map("_id") @db.ObjectId
+  createdat         String
+  rentaldate        String
+  returndate        String?
+  lastupdate        String?
+  description       String?            @db.String
+  userid            String             @db.String
+  hotelid           String             @db.String
+  reservationstatus String?
+}
