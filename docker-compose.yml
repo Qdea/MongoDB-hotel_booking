@@ -12,4 +12,4 @@ services:
     ports:
       - '27018:27017'
 
-#mongosh "mongodb://test:test@127.0.0.1:27017/hotel_booking?authSource=admin"
+#mongosh "mongodb://test:test@127.0.0.1:27018/hotel_booking?authSource=admin"

@@ -7,16 +7,16 @@ const baseaddressRules = {
       "properties": {
         "_id": {"bsonType": "objectId"},
         "phone": {"bsonType": "string"},
-        "createdAt": {"bsonType": "date"},
-        "lastUpdate": {"bsonType": "date"},
+        "createdat": {"bsonType": "string"},
+        "lastupdate": {"bsonType": "string"},
         "city": {
           "bsonType": "object",
           "additionalProperties": false,
           "required": ["name", "country"],
           "properties": {
             "name": {"bsonType": "string"},
-            "createdat": {"bsonType": "date"},
-            "lastupdate": {"bsonType": "date"},
+            "createdat": {"bsonType": "string"},
+            "lastupdate": {"bsonType": "string"},
             "country": {
               "bsonType": "object",
               "additionalProperties": false,
@@ -24,8 +24,8 @@ const baseaddressRules = {
               "properties": {
                 "code": {"bsonType": "string", "minLength": 3},
                 "name": {"bsonType": "string", "maxLength": 255},
-                "createdat": {"bsonType": "date"},
-                "lastupdate": {"bsonType": "date"}
+                "createdat": {"bsonType": "string"},
+                "lastupdate": {"bsonType": "string"}
               }
             },
           }
@@ -33,7 +33,6 @@ const baseaddressRules = {
       }
     },
 };
-
 const hotelRules = {
   "$jsonSchema":
     {
@@ -44,16 +43,16 @@ const hotelRules = {
         "_id": {"bsonType": "objectId"},
         "name": {"bsonType": "string"},
         "rating": {"bsonType": "double"},
-        "createdat": {"bsonType": "date"},
-        "lastupdate": {"bsonType": "date"},
+        "createdat": {"bsonType": "string"},
+        "lastupdate": {"bsonType": "string"},
         "hoteltype": {
           "bsonType": "object",
           "additionalProperties": false,
           "required": ["name", "description"],
           "properties": {
             "name": {"bsonType": "string"},
-            "createdat": {"bsonType": "date"},
-            "lastupdate": {"bsonType": "date"},
+            "createdat": {"bsonType": "string"},
+            "lastupdate": {"bsonType": "string"},
             "description": {"bsonType": "string", "maxLength": 255}
           }
         },
@@ -65,8 +64,8 @@ const hotelRules = {
             "street": {"bsonType": "string"},
             "house": {"bsonType": "int"},
             "building": {"bsonType": "int"},
-            "createdat": {"bsonType": "date"},
-            "lastupdate": {"bsonType": "date"},
+            "createdat": {"bsonType": "string"},
+            "lastupdate": {"bsonType": "string"},
             "baseaddressid": {"bsonType": "objectId"}
           }
         },
@@ -77,8 +76,8 @@ const hotelRules = {
           "required": ["name", "categories"],
           "properties": {
             "name": {"bsonType": "string"},
-            "createdat": {"bsonType": "date"},
-            "lastupdate": {"bsonType": "date"},
+            "createdat": {"bsonType": "string"},
+            "lastupdate": {"bsonType": "string"},
             "description": {"bsonType": "string", "maxLength": 255},
             "categories": {
               "bsonType": "array",
@@ -87,8 +86,8 @@ const hotelRules = {
               "properties": {
                 "description": {"bsonType": "string", "maxLength": 255},
                 "name": {"bsonType": "string", "maxLength": 50},
-                "createdat": {"bsonType": "date"},
-                "lastupdate": {"bsonType": "date"}
+                "createdat": {"bsonType": "string"},
+                "lastupdate": {"bsonType": "string"}
               }
             }
           }
@@ -96,7 +95,6 @@ const hotelRules = {
       }
     },
 };
-
 const userRules = {
   "$jsonSchema":
     {
@@ -109,9 +107,9 @@ const userRules = {
         "lastname": {"bsonType": "string"},
         "email": {"bsonType": "string"},
         "password": {"bsonType": "string"},
-        "createdat": {"bsonType": "date"},
-        "lastupdate": {"bsonType": "date"},
-        "lastlogin": {"bsonType": "date"},
+        "createdat": {"bsonType": "string"},
+        "lastupdate": {"bsonType": "string"},
+        "lastlogin": {"bsonType": "string"},
         "addressid": {"bsonType": "objectId"},
         "role": {"bsonType": "string"},
         "hotels": {
@@ -125,7 +123,6 @@ const userRules = {
       }
     },
 };
-
 const reservationRules = {
   "$jsonSchema":
     {
@@ -134,10 +131,10 @@ const reservationRules = {
       "required": ["userid", "hotelid", "status"],
       "properties": {
         "_id": {"bsonType": "objectId"},
-        "createdat": {"bsonType": "date"},
-        "lastupdate": {"bsonType": "date"},
-        "rentaldate": {"bsonType": "date"},
-        "returndate": {"bsonType": "date"},
+        "createdat": {"bsonType": "string"},
+        "lastupdate": {"bsonType": "string"},
+        "rentaldate": {"bsonType": "string"},
+        "returndate": {"bsonType": "string"},
         "description": {"bsonType": "string", "maxLength": 255},
         "userid": {"bsonType": "objectId"},
         "hotelid": {"bsonType": "objectId"},
@@ -153,16 +150,15 @@ const paymentRules = {
       "required": ["reservationid", "userid"],
       "properties": {
         "_id": {"bsonType": "objectId"},
-        "createdat": {"bsonType": "date"},
-        "lastupdate": {"bsonType": "date"},
-        "paymentdate": {"bsonType": "date"},
+        "createdat": {"bsonType": "string"},
+        "lastupdate": {"bsonType": "string"},
+        "paymentdate": {"bsonType": "string"},
         "reservationid": {"bsonType": "objectId"},
         "userid": {"bsonType": "objectId"},
         "amount": {"bsonType": "double"}
       }
     },
 };
-
 const roomRules = {
   "$jsonSchema":
     {
@@ -173,8 +169,8 @@ const roomRules = {
         "_id": {"bsonType": "objectId"},
         "name": {"bsonType": "string"},
         "amount": {"bsonType": "int"},
-        "createdat": {"bsonType": "date"},
-        "lastupdate": {"bsonType": "date"},
+        "createdat": {"bsonType": "string"},
+        "lastupdate": {"bsonType": "string"},
         "description": {"bsonType": "string", "maxLength": 255},
         "hotelid": {"bsonType": "objectId"},
         "prices": {
@@ -183,17 +179,17 @@ const roomRules = {
           "required": ["price", "period"],
           "properties": {
             "price": {"bsonType": "double"},
-            "createdat": {"bsonType": "date"},
-            "lastupdate": {"bsonType": "date"},
+            "createdat": {"bsonType": "string"},
+            "lastupdate": {"bsonType": "string"},
             "period": {
               "bsonType": "object",
               "additionalProperties": false,
               "required": ["startdate", "finishdate"],
               "properties": {
-                "createdat": {"bsonType": "date"},
-                "startdate": {"bsonType": "date"},
-                "finishdate": {"bsonType": "date"},
-                "lastupdate": {"bsonType": "date"}
+                "createdat": {"bsonType": "string"},
+                "startdate": {"bsonType": "string"},
+                "finishdate": {"bsonType": "string"},
+                "lastupdate": {"bsonType": "string"}
               }
             }
           }
@@ -207,3 +203,4 @@ db.runCommand({"collMod": "user", "validator": userRules});
 db.runCommand({"collMod": "reservation", "validator": reservationRules});
 db.runCommand({"collMod": "payment", "validator": paymentRules});
 db.runCommand({"collMod": "room", "validator": roomRules});
+//or cd C:\Users\ivano\MongoDB-rules && mongosh --host 127.0.0.1 --port 27018 -u test -p test -f rules.js на винде

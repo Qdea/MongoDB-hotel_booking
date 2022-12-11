@@ -39,7 +39,7 @@ type FullAddress {
 model hotel {
   id              String            @id @default(auto()) @map("_id") @db.ObjectId
   name            String            @unique @db.String
-  rating          Float?
+  rating          String
   description     String?           @db.String
   createdat       String
   lastupdate      String?
